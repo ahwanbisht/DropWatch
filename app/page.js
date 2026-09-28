@@ -2,9 +2,17 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { LogIn, Rabbit, Shield, Bell } from "lucide-react";
 import AddProductForm from "@/components/AddProductForm";
+import AuthButton from "@/components/AuthButton";
+import { createClient } from "@/utils/supabase/server";
 
-export default function Home() {
-  const user=null;
+export default async function Home() {
+  const supabase = await createClient();
+  const { 
+    data: { user }, 
+  } = await supabase.auth.getUser();
+
+
+
   const products = [];
   const FEATURES = [
     {
@@ -41,14 +49,9 @@ export default function Home() {
           </div>
         
           {/* Auth Button */}
-          <Button 
-          variant="default" 
-          size="sm" 
-          className="bg-blue-600 hover:bg-blue-700 text-white gap-2"
-          >
-            <LogIn className="w-4 h-4" />
-            Sign In
-          </Button>
+          <AuthButton user={user} />
+
+
         </div>
       </header>
 
