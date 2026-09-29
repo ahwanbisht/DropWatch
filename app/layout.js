@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata = {
   title: "Drop Watch",
@@ -11,7 +12,9 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
     >
-      <body>{children}</body>
+      <body>{children}
+        <Toaster richColors />
+      </body>
     </html>
   );
 }
