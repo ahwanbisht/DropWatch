@@ -109,3 +109,5 @@ export async function POST(request) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
+
+//curl.exe -X POST https://get-drop-watch.vercel.app/api/cron/check-prices -H "Authorization: Bearer aa3454327a7161de565a857080c7a4b78f571de06b32c84e630d4cbc57065053"
