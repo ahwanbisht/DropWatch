@@ -74,20 +74,20 @@ export async function POST(request) {
 
             if (newPrice < oldPrice) {
                 const {
-                data: { user },
+                    data: { user },
                 } = await supabase.auth.admin.getUserById(product.user_id);
 
                 if (user?.email) {
-                const emailResult = await sendPriceDropAlert(
-                    user.email,
-                    product,
-                    oldPrice,
-                    newPrice
-                );
+                    const emailResult = await sendPriceDropAlert(
+                        user.email,
+                        product,
+                        oldPrice,
+                        newPrice
+                    );
 
-                if (emailResult.success) {
-                    results.alertsSent++;
-                }
+                    if (emailResult.success) {
+                        results.alertsSent++;
+                    }
                 }
             }
             }
